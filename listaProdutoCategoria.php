@@ -7,18 +7,16 @@ $db = new Database();
 
 $data = $db->dbSelect("SELECT * FROM produtocategoria");
 
-print_r($data);
-
 ?>
 
 <div class="container mt-5">
 
     <div class="row">
         <div class="col-10">
-            <h2>Lista de Categoria de Produtos/Serviços</h2>
+            <h3>Lista de Categoria de Produtos/Serviços</h3>
         </div>
         <div class="col-2 text-end">
-            <a href="#" 
+            <a href="index.php?pagina=formProdutoCategoria&acao=insert" 
                 class="btn btn-outline-secondary btn-sm"
                 title="Nova">
                 Nova

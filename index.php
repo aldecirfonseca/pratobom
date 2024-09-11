@@ -69,7 +69,7 @@
                                                 <li class="nav-item"><a class="nav-link" href="listaQuemSomos">Quem somos</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaMenu">Menu</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaChef">Chef</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="listaCategoria">Categoria</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaProdutoCategoria">Categoria</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaBlog">Blog</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaReserva">Reserva</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaUsuario">Usuários</a></li>
