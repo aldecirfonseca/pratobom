@@ -47,7 +47,7 @@ class Database
             } elseif ($tipoRetorno == "count") {
                 return $data->rowCount();
             } else {
-                return $data->fetch(PDO::FETCH_OBJ);
+                return $data->fetch();
             }
 
         } catch (Exception $ex) {
@@ -72,13 +72,13 @@ class Database
             $data->execute($dados);
 
             if ($conn->lastInsertId() > 0) {
-                return true;
+                return $conn->lastInsertId();
             } else {
-                return false;
+                return 0;
             }
         } catch (Exception $ex) {
-            echo '<p style="color: red;">ERROR: '. $ex->getMessage(). "</p>"; exit;
-            return false;
+            $_SESSION['msgError'] = 'ERROR: '. $ex->getMessage();
+            return 0;
         }
     }
 
@@ -98,13 +98,13 @@ class Database
             $data->execute($dados);
 
             if ($data->rowCount() > 0) {
-                return true;
+                return $data->rowCount();
             } else {
-                return false;
+                return 0;
             }
         } catch (Exception $ex) {
-            echo '<p style="color: red;">ERROR: '. $ex->getMessage(). "</p>"; exit;
-            return false;
+            $_SESSION['msgError'] = 'ERROR: ' . $ex->getMessage();
+            return 0;
         }
     }
     /**
