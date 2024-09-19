@@ -20,7 +20,21 @@ CREATE TABLE IF NOT EXISTS `produtocategoria` (
   `descricao` varchar(50) NOT NULL,
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela pratobom.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nivel` int NOT NULL DEFAULT '2' COMMENT '1=Administrador; 2=Usuario',
+  `nome` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(250) NOT NULL,
+  `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo;',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Exportação de dados foi desmarcado.
 

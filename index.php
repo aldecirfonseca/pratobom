@@ -76,7 +76,7 @@
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaProdutoCategoria">Categoria</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaBlog">Blog</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaReserva">Reserva</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="listaUsuario">Usuários</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaUsuario">Usuários</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">Trocar a Senha</a></li>
                                         </ul>
                                     </li>

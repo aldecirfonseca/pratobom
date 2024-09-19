@@ -73,4 +73,22 @@ class Funcoes
         }
         return $default;
     }
+
+    /**
+     * getStatusRegistro
+     *
+     * @param int $status 
+     * @return string
+     */
+    public static function getStatusRegistro($status) : string
+    {
+        if ($status == 1) {
+            return "Ativo";
+        } elseif ($status == 2) {
+            return "Inativo";
+        } else {
+            return "...";
+        }
+    }
+
 }
