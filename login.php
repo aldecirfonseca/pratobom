@@ -1,56 +1,74 @@
 <?php
-/*
- *  Login
- */
-?>
 
-<section class="section-margin">
-    
-    <div class="container">
+    session_start();
+
+    require_once "lib/Database.php";
+
+    if (isset($_POST['email'])) {
+
+        $db = new Database();
+
+        // buscar o usuário do e-mail informado no login
+        $data = $db->dbSelect(
+            "SELECT * FROM usuario WHERE email = ?",
+            'first',
+            [$_POST['email']]);
         
-        <div class="section-intro mb-75px">
-            <h4 class="intro-title">Área restrita</h4>
-        </div>   
-        
-        <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-            <form class="form-contact contact_form" action="efetuarLogin" method="post" id="contactForm" novalidate="novalidate">
-            <div class="row">
+        if ($data === false) {
 
-                <div class="col-sm-12">
-                    <h4 class="intro-title">Acesso</h4>
-                </div>        
-                
-                <div class="col-sm-12">
-                <div class="form-group">
-                    <input class="form-control" name="Login" id="Login" 
-                        type="text" 
-                        placeholder="Informe o login"
-                        required>
-                </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input class="form-control" name="Senha" id="Senha" 
-                            type="password" placeholder="Sua senha" required>
-                    </div>
-                </div>
-            </div>
+            // buscar os usuários existentes
+            $result = $db->dbSelect("SELECT * FROM usuario", 'count');
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-danger" role="alert">
-                        Exibir aqui menagem de error
-                    </div>
-                </div>
-            </div>
+            if ($result == 0) {
 
-            <div class="form-group mt-3">
-                <button type="submit" class="button button-contactForm">Acessar</button>
-            </div>
-            </form>
+                // Cria o super user
 
-        </div>
+                $result = $db->dbInsert("INSERT INTO usuario
+                                        (nivel, nome, email, senha)
+                                        VALUES (?, ?, ?, ?)",
+                                        [
+                                            1,
+                                            "Administrador",
+                                            "administrador@pratobom.com.br",
+                                            password_hash("fasm@2024", PASSWORD_DEFAULT)
+                                        ]);
 
-    </div>
-</section>
+                $_SESSION['msgSuccess'] = "Login super usuário criado com sucesso.";
+
+            } else {
+                $_SESSION['msgError'] = "Login ou senha inválida !";
+            }
+
+        } else {
+
+            // status
+            if ($data['statusRegistro'] != 1) {
+                $_SESSION['msgError'] = "Seu cadastro está pendente de aprovação ou bloqueado, favor procurar o administrador";
+            } else {
+
+                // senha
+
+                if (!password_verify(trim($_POST['senha']), $data['senha'])) {
+                    $_SESSION['msgError'] = "Login ou senha inválida !";
+                } else {
+
+                    // confirma login e prepara o acesso
+
+                    // criar flags do usuário logado
+
+                    $_SESSION['userId']     = $data['id'];
+                    $_SESSION['userEmail']  = $data['email'];
+                    $_SESSION['userName']   = $data['nome'];
+                    $_SESSION['userNivel']  = $data['nivel'];
+
+                    // redirecionar o usuário para a página index
+                    return header("Location: index.php");
+                }
+            }
+        }
+
+    } else {
+        $_SESSION['msgError'] = "Para acessar a área administrativa, favor fazer o login ";
+    }
+
+    return header("Location: index.php?pagina=loginView");

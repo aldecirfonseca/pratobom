@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    require_once "lib/funcoes.php"
 ?>
 
 <!DOCTYPE html>
@@ -58,25 +60,30 @@
                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=faleconosco">Fale Conosco</a></li>
                                 
                                 <?php
-                                if (1 == 2) {
+                                if (!isset($_SESSION['userId'])) {
                                     ?>
-                                    <li class="nav-item"><a class="nav-link" href="index.php?pagina=login">Área restrita</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.php?pagina=loginView">Área restrita</a></li>
                                     <?php
                                 } else {
                                     ?>
 
                                     <li class="nav-item submenu dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                            aria-expanded="false">aldecir.fonseca</a>
+                                            aria-expanded="false"><?= substr($_SESSION['userName'], 0, 15) ?></a>
                                         <ul class="dropdown-menu">
-                                            <li class="nav-item"><a class="nav-link" href="controllerUsuario/logout">Sair</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
+
+                                            <?php if ($_SESSION['userNivel'] == 1): ?>
                                                 <li class="nav-item"><a class="nav-link" href="listaQuemSomos">Quem somos</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaMenu">Menu</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCargo">Cargo</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaChef">Chef</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaProdutoCategoria">Categoria</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaBlog">Blog</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaReserva">Reserva</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaUsuario">Usuários</a></li>
+                                            <?php endif; ?>
+
                                             <li class="nav-item"><a class="nav-link" href="#">Trocar a Senha</a></li>
                                         </ul>
                                     </li>
@@ -94,6 +101,8 @@
         <main>
 
             <?php
+
+                echo Funcoes::mensagem();
 
                 $pagina = 'home';
 

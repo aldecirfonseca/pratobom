@@ -3,6 +3,13 @@
 require_once "lib/Database.php";
 require_once "lib/funcoes.php";
 
+// Verificando se o usário está logado e se o é administrador,
+// se não for rediciona para a página login
+if (!Funcoes::getAdministrador()) {
+    $_SESSION['msgError'] = "Usuário não logado ou sem permissão para acessar o recurso";
+    return header("Location: index.php");
+}
+
 $db = new Database();
 
 $data = $db->dbSelect("SELECT * FROM usuario ORDER BY nome");

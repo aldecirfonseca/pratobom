@@ -91,4 +91,22 @@ class Funcoes
         }
     }
 
+    /**
+     * getAdministrador
+     *
+     * @return bool
+     */
+    public static function getAdministrador()
+    {
+        if (!isset($_SESSION['userNivel'])) {
+            return false;
+        } else {
+            if ($_SESSION['userNivel'] == 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
