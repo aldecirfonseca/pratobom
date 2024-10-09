@@ -75,10 +75,10 @@
 
                                             <?php if ($_SESSION['userNivel'] == 1): ?>
                                                 <li class="nav-item"><a class="nav-link" href="listaQuemSomos">Quem somos</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="listaMenu">Menu</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCategoria">Categoria</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCardapio">Cardápio</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCargo">Cargo</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaChef">Chef</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaProdutoCategoria">Categoria</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaBlog">Blog</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaReserva">Reserva</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaUsuario">Usuários</a></li>
@@ -100,9 +100,11 @@
         
         <main>
 
-            <?php
+            <div class="container">
+                <?= Funcoes::mensagem(); ?>
+            </div>
 
-                echo Funcoes::mensagem();
+            <?php
 
                 $pagina = 'home';
 

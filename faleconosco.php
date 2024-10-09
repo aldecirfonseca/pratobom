@@ -11,8 +11,8 @@
         
         <div class="section-intro mb-75px">
             <h4 class="intro-title">Fale Conosco</h4>
-        </div>        
-        
+        </div>
+
         <div class="d-none d-sm-block mb-5 pb-4">
 
             <img src="assets/img/map_contato.png" alt="Localização da empresa" 
@@ -25,7 +25,9 @@
                 <h2 class="contact-title">Entre em contato conosco</h2>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="faleconoscoEnvio" method="post" id="contactForm" novalidate="novalidate">
+
+                <form class="form-contact contact_form" action="faleconoscoEnvio.php" method="post" id="contactForm" novalidate="novalidate">
+
                     <div class="row">
                         <div class="col-sm-12">
                         <div class="form-group">
@@ -37,7 +39,7 @@
                         </div>
                         <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="message" id="message" 
+                            <textarea class="form-control w-100" name="mensagem" id="mensagem" 
                                         cols="30" rows="9" 
                                         placeholder="Escreva sua mensagem"></textarea>
                         </div>
@@ -64,6 +66,7 @@
                     <div class="form-group mt-3">
                         <button type="submit" class="button button-contactForm">Enviar Mensagem</button>
                     </div>
+
                 </form>
 
             </div>
@@ -94,3 +97,13 @@
         </div>
     </div>
 </section>
+
+<script src="assets/ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#mensagem'))
+        .catch( error => {
+            console.error(error);
+        });
+</script>

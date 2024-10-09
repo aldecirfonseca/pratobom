@@ -14,13 +14,53 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Copiando estrutura para tabela pratobom.produtocategoria
-CREATE TABLE IF NOT EXISTS `produtocategoria` (
+-- Copiando estrutura para tabela pratobom.cardapio
+CREATE TABLE IF NOT EXISTS `cardapio` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `composicao` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `preco` decimal(14,2) NOT NULL,
+  `categoria_id` int NOT NULL,
+  `imagem` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `emDestaque` int NOT NULL DEFAULT '2' COMMENT '1=Sim; 2=Não',
+  `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Sim; 2=Não',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK1_categoria_id` (`categoria_id`) USING BTREE,
+  CONSTRAINT `FK1_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Cardapio';
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela pratobom.cargo
+CREATE TABLE IF NOT EXISTS `cargo` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `descricao` varchar(50) NOT NULL,
+  `statusRegistro` int NOT NULL DEFAULT (1) COMMENT '1=Ativo; 2=Inativo',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `descricao` (`descricao`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Cargo dos Colaboradores';
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela pratobom.categoria
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela pratobom.chefs
+CREATE TABLE IF NOT EXISTS `chefs` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `nome` varchar(60) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `cargo` varchar(60) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 -- Exportação de dados foi desmarcado.
 
@@ -34,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo;',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Exportação de dados foi desmarcado.
 
