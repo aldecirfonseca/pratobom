@@ -6,6 +6,12 @@ require_once "lib/funcoes.php";
 $db = new Database();
 $func = new Funcoes();
 
+//
+
+$aCategoria = $db->dbSelect("SELECT * FROM categoria ORDER BY descricao");
+
+//
+
 $dados = [];
 
 if ($_GET['acao'] != 'insert') {
@@ -49,6 +55,7 @@ if ($_GET['acao'] != 'insert') {
                         autofocus
                         value="<?= Funcoes::setValue($dados, 'descricao') ?>">
             </div>
+
             <div class="col-3">
                 <label for="statusRegistro" class="form-label">Status</label>
                 <select 
@@ -61,6 +68,41 @@ if ($_GET['acao'] != 'insert') {
                         <option value="2" <?= Funcoes::setValue($dados, 'statusRegistro') == "2" ? 'selected' : '' ?>>Inativo</option>
                 </select>
             </div>
+
+            <div class="col-12 mt-3 mb-3">
+                <label for="composicao" class="form-label">Composição</label>
+                <textarea name="composicao" id="composicao"><?= Funcoes::setValue($dados, 'composicao') ?></textarea>
+            </div>
+
+            <div class="col-6">
+
+                <label for="categoria_id" class="form-label">Categoria</label>
+                <select class="form-control" id="categoria_id" name="categoria_id" required>
+                    <option value=""  <?= Funcoes::setValue($dados, 'categoria_id') == ""  ? 'selected' : '' ?>>...</option>
+
+                    <?php foreach ($aCategoria as $cat): ?>
+                        <option value="<?= $cat['id'] ?>" <?= Funcoes::setValue($dados, 'categoria_id') == $cat['id'] ? 'selected' : '' ?>><?= $cat['descricao'] ?></option>
+                    <?php endforeach; ?>
+                    
+                </select>
+            </div>
+
+            <div class="col-3">
+                <label for="preco" class="form-label">Preço</label>
+                <input type="text" class="form-control" id="preco" name="preco" required dir="rtl"
+                        value="<?= Funcoes::setValue($dados, 'preco') ?>">
+            </div>
+
+            <div class="col-3">
+                <label for="emDestaque" class="form-label">Em Destaque</label>
+                <select class="form-control" id="emDestaque" name="emDestaque" required>
+                        <option value=""  <?= Funcoes::setValue($dados, 'emDestaque') == ""  ? 'selected' : '' ?>>...</option>
+                        <option value="1" <?= Funcoes::setValue($dados, 'emDestaque') == "1" ? 'selected' : '' ?>>Sim</option>
+                        <option value="2" <?= Funcoes::setValue($dados, 'emDestaque') == "2" ? 'selected' : '' ?>>Não</option>
+                </select>
+            </div>
+
+
 
         </div>
 
@@ -79,7 +121,6 @@ if ($_GET['acao'] != 'insert') {
 
     </form>
 </div>
-
 
 <script src="assets/ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
 

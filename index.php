@@ -25,6 +25,7 @@
         <link href="utilities/DataTables/datatables.min.css" rel="stylesheet" type="text/css"/>
         
         <script src="assets/js/jquery-1.11.3.min.js"></script>
+        <script src="assets/js/jqueryMask.js"></script>
         <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
         <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
         <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
