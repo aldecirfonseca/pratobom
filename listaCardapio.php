@@ -50,8 +50,8 @@ $data = $db->dbSelect("SELECT c.*, cat.descricao AS categoriaDescricao
                     <tr>
                         <td><?= $row['id'] ?></td>
                         <td><?= $row['descricao'] ?></td>
-                        <td><?= $row['descricaoCategoria'] ?></td>
-                        <td><?= Funcoes::valorBr($row['preco']) ?></td>
+                        <td><?= $row['categoriaDescricao'] ?></td>
+                        <td class="text-right"><?= Funcoes::valorBr($row['preco']) ?></td>
                         <td><?= ($row['emDestaque'] == 1 ? "Sim" : "Não") ?></td>
                         <td><?= Funcoes::getStatusRegistro($row['statusRegistro']) ?></td>
                         <td>

@@ -38,7 +38,7 @@ if ($_GET['acao'] != 'insert') {
         </div>
     </div>
 
-    <form class="g-3" action="<?= $_GET['acao'] ?>Cardapio.php" method="POST">
+    <form class="g-3" action="<?= $_GET['acao'] ?>Cardapio.php" method="POST" enctype="multipart/form-data">
 
         <input type="hidden" name="id" id="id" value="<?= Funcoes::setValue($dados, "id") ?>">
 
@@ -102,9 +102,28 @@ if ($_GET['acao'] != 'insert') {
                 </select>
             </div>
 
-
-
         </div>
+
+        <h5 class="mt-3 mb-3">Imagem do Prato/Produto</h5>
+
+        <?php if ($_GET['acao'] != "insert"): ?>
+            <div class="row">
+                <div class="form-group col-12">
+                    <img src="uploads/cardapio/<?= Funcoes::setValue($dados, 'imagem') ?>" alt="..." class="img-thumbnail" width="200" height="200">
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (in_array($_GET['acao'], ["insert", "update"])): ?>
+            <div class="row mt-3">
+                <div class="form-group col-12 col-md-4">
+                    <label for="imagem" class="form-label font-weight-bold">Imagem<span class="text-danger">*</span></label>
+                    <input type="file" class="form-control-file" name='imagem' id="imagem" accept="image/png, image/jpeg, image/jpg" <?= $_GET['acao'] == 'insert' ? 'required' : '' ?>>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <input type="hidden" name="excluirImagem" id="excluirImagem" value="<?= Funcoes::setValue($dados, 'imagem') ?>">
 
         <div class="row mt-3">
             <div class="col-12">

@@ -1,3 +1,16 @@
+<?php
+
+// listaCategoria.php
+
+require_once "lib/Database.php";
+require_once "lib/funcoes.php";
+
+$db = new Database();
+
+$data = $db->dbSelect("SELECT * FROM quemsomos", 'first');
+
+?>
+
 <section class="about section-margin pb-xl-70">
     
     <div class="container">
@@ -11,17 +24,17 @@
                 <div class="img-styleBox">
                     <div class="styleBox-border">
                         <img class="styleBox-img1 img-fluid" style="max-height: 414px; max-width: 390px;" 
-                            src="imgCliente/about-img1.png"  alt="">
+                            src="uploads/quemsomos/<?= $data['imagem1'] ?>"  alt="">
                     </div>
                     <img class="styleBox-img2 img-fluid" style="max-height: 294px; max-width: 261px;"
-                        src="imgCliente/about-img2.png" alt="">
+                        src="uploads/quemsomos/<?= $data['imagem2'] ?>" alt="">
                 </div>
             </div>
             <div class="col-md-6 pl-md-5 pl-xl-0 offset-xl-1 col-xl-5">
                 <div class="section-intro mb-lg-4">
-                    <h2>Prato Bom</h2>
+                    <h2><?= $data['titulo'] ?></h2>
                 </div>
-                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <?= $data['texto'] ?>
             </div>
         </div>
     </div>

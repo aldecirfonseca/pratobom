@@ -54,7 +54,7 @@
                             <ul class="nav navbar-nav menu_nav justify-content-end">
                                 <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=quemsomos">Quem somos</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=menu">Menu</a>
+                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=cardapio">Cardápio</a>
                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=chef">Chef</a>
                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=reserva">Reserva</a>
                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=blog">Blog</a>
@@ -75,7 +75,7 @@
                                             <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
 
                                             <?php if ($_SESSION['userNivel'] == 1): ?>
-                                                <li class="nav-item"><a class="nav-link" href="listaQuemSomos">Quem somos</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaQuemSomos">Quem somos</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCategoria">Categoria</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCardapio">Cardápio</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCargo">Cargo</a></li>
