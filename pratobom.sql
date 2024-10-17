@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `cardapio` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK1_categoria_id` (`categoria_id`) USING BTREE,
   CONSTRAINT `FK1_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Cardapio';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COMMENT='Cardapio';
 
 -- Exportação de dados foi desmarcado.
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `descricao` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Exportação de dados foi desmarcado.
 
@@ -61,6 +61,19 @@ CREATE TABLE IF NOT EXISTS `chefs` (
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela pratobom.quemsomos
+CREATE TABLE IF NOT EXISTS `quemsomos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) NOT NULL,
+  `texto` text NOT NULL,
+  `imagem1` varchar(100) NOT NULL DEFAULT '',
+  `imagem2` varchar(100) NOT NULL DEFAULT '',
+  `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Aivo; 2=Inativo',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Exportação de dados foi desmarcado.
 
