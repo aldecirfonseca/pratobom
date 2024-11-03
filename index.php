@@ -1,7 +1,9 @@
 <?php
     session_start();
 
-    require_once "lib/funcoes.php"
+    ob_start();
+
+    require_once "lib/funcoes.php";
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +87,7 @@
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaUsuario">Usuários</a></li>
                                             <?php endif; ?>
 
-                                            <li class="nav-item"><a class="nav-link" href="#">Trocar a Senha</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="index.php?pagina=trocarSenhaView">Trocar a Senha</a></li>
                                         </ul>
                                     </li>
                                     <?php

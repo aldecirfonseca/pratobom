@@ -92,9 +92,7 @@ if ($_GET['acao'] != 'insert') {
                 <input type="password" 
                         class="form-control" 
                         id="senha" 
-                        name="senha" 
-                        required
-                        value="<?= Funcoes::setValue($dados, 'senha') ?>">
+                        name="senha">
             </div>
 
             <div class="col-6 mt-3">
@@ -102,9 +100,7 @@ if ($_GET['acao'] != 'insert') {
                 <input type="password" 
                         class="form-control" 
                         id="confSenha" 
-                        name="confSenha" 
-                        required
-                        value="<?= Funcoes::setValue($dados, 'senha') ?>">
+                        name="confSenha">
             </div>
 
         </div>
