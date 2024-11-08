@@ -3,6 +3,8 @@
 
     ob_start();
 
+    date_default_timezone_set('America/Sao_Paulo');
+
     require_once "lib/funcoes.php";
 ?>
 
@@ -82,7 +84,7 @@
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCardapio">Cardápio</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaCargo">Cargo</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaChef">Chef</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="listaBlog">Blog</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaBlog">Blog</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="listaReserva">Reserva</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="index.php?pagina=listaUsuario">Usuários</a></li>
                                             <?php endif; ?>

@@ -10,7 +10,7 @@ if (isset($_POST['senhaAtual'])) {
     // criar o objeto do banco e dados
     $db = new Database();
 
-    try {
+    try {   
 
         // buscar o usuário do e-mail informado no login
         $data = $db->dbSelect(
