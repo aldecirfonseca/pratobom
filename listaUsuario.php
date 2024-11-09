@@ -33,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM usuario ORDER BY nome");
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaUsuario" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -64,7 +64,12 @@ $data = $db->dbSelect("SELECT * FROM usuario ORDER BY nome");
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -73,3 +78,5 @@ $data = $db->dbSelect("SELECT * FROM usuario ORDER BY nome");
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaUsuario") ?>

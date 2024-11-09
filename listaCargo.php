@@ -33,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM cargo ORDER BY descricao");
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaCargo" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -60,7 +60,10 @@ $data = $db->dbSelect("SELECT * FROM cargo ORDER BY descricao");
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="4">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -69,3 +72,5 @@ $data = $db->dbSelect("SELECT * FROM cargo ORDER BY descricao");
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaCargo") ?>

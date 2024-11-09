@@ -4,14 +4,11 @@
     ob_start();
 
     date_default_timezone_set('America/Sao_Paulo');
-
-    require_once "lib/funcoes.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -26,9 +23,8 @@
         <link rel="stylesheet" href="assets/vendors/Magnific-Popup/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/style_fasm.css">
-        <link href="utilities/DataTables/datatables.min.css" rel="stylesheet" type="text/css"/>
-        
-        <script src="assets/js/jquery-1.11.3.min.js"></script>
+
+        <script src="assets/js/jquery-3.3.1.min.js"></script>
         <script src="assets/js/jqueryMask.js"></script>
         <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
         <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -37,10 +33,6 @@
         <script src="assets/js/jquery.ajaxchimp.min.js"></script>
         <script src="assets/js/mail-script.js"></script>
         <script src="assets/js/main.js"></script>        
-        
-        <script src="utilities/DataTables/datatables.min.js" type="text/javascript"></script>
-        
-    </head>
     <body>
         
         <header class="header_area">
@@ -106,7 +98,11 @@
         <main>
 
             <div class="container">
-                <?= Funcoes::mensagem(); ?>
+                <?php 
+                    require_once "lib/funcoes.php";
+
+                    echo Funcoes::mensagem();
+                ?>
             </div>
 
             <?php

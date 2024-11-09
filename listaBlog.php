@@ -34,7 +34,7 @@ $data = $db->dbSelect("SELECT * FROM blog ORDER BY dataPostagem DESC");
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaBlog" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -61,7 +61,10 @@ $data = $db->dbSelect("SELECT * FROM blog ORDER BY dataPostagem DESC");
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="4">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -70,3 +73,5 @@ $data = $db->dbSelect("SELECT * FROM blog ORDER BY dataPostagem DESC");
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaBlog") ?>

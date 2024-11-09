@@ -36,7 +36,7 @@ $data = $db->dbSelect("SELECT * FROM quemsomos");
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaQuemsomos" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -63,7 +63,10 @@ $data = $db->dbSelect("SELECT * FROM quemsomos");
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="4">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -72,3 +75,5 @@ $data = $db->dbSelect("SELECT * FROM quemsomos");
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaQuemsomos") ?>

@@ -2,7 +2,6 @@
 // listaCategoria.php
 
 require_once "lib/Database.php";
-require_once "lib/funcoes.php";
 
 // Verificando se o usário está logado e se o é administrador,
 // se não for rediciona para a página login
@@ -34,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM categoria ORDER BY descricao");
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaCategoria" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -61,7 +60,10 @@ $data = $db->dbSelect("SELECT * FROM categoria ORDER BY descricao");
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="4">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -70,3 +72,5 @@ $data = $db->dbSelect("SELECT * FROM categoria ORDER BY descricao");
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaCategoria") ?>

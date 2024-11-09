@@ -37,7 +37,7 @@ $data = $db->dbSelect("SELECT c.*, cat.descricao AS categoriaDescricao
     
     <?= Funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
+    <table id="tbListaCardapio" class="table table-striped table-hover table-bordered table-responsive-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -70,7 +70,13 @@ $data = $db->dbSelect("SELECT c.*, cat.descricao AS categoriaDescricao
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="7">Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td>Nenhum registro encontrado.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php endif; ?>
 
@@ -79,3 +85,5 @@ $data = $db->dbSelect("SELECT c.*, cat.descricao AS categoriaDescricao
     </table>
 
 </div>
+
+<?php echo Funcoes::datatables("tbListaCardapio") ?>
